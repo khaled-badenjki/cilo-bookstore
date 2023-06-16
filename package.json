@@ -1,0 +1,12 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cilo": "^1.1.1",
+    "express": "^4.18.2",
+    "sequelize": "^6.32.0",
+    "sequelize-cli": "^6.6.1"
+  }
+}
