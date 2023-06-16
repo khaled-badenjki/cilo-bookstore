@@ -6,7 +6,10 @@
   "dependencies": {
     "cilo": "^1.1.1",
     "express": "^4.18.2",
-    "sequelize": "^6.32.0",
+    "sequelize": "^6.32.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
     "sequelize-cli": "^6.6.1"
   }
 }
