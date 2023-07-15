@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const { cilo, db, singlify } = require('./dal/models/index')
+const { cilo, db, singlify, tenantify } = require('./dal/models/index')
 
 app.use(express.json())
 
@@ -35,16 +35,26 @@ app.post('/users', singlify, async (req, res) => {
   })
 })
 
+app.post('/books', tenantify, async (req, res) => {
+  const { title, author } = req.body
 
+  const book = await db().Book.create({
+    title,
+    author
+  })
 
-// app.post('/books', (req, res) => {
-//   db().Book.create({
-//     title: 'The Great Gatsby',
-//     author: 'F. Scott Fitzgerald'
-//   }).then(book => {
-//     res.json(book)
-//   })
-// })
+  res.status(201).json({
+    book
+  })
+})
+
+app.get('/books', tenantify, async (req, res) => {
+  const books = await db().Book.findAll()
+
+  res.status(200).json({
+    books
+  })
+})
 
 app.listen(port, () => {
   console.log(`Cilo app listening on port ${port}`)
